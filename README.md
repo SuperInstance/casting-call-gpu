@@ -181,3 +181,41 @@ casting-call-gpu/
 ## License
 
 MIT
+
+---
+
+## Self-Supervised Orchestrator (Next Phase)
+
+The GPU engine evolves from analyzer to autonomous model router:
+
+```
+Task with requested signature → find best model → load → run → measure → log → improve
+```
+
+### Model Pool Discovery
+- Scans for local GGUF models in `~/.cache/llama.cpp/` and similar paths
+- Reads API keys from environment or `.keys/` directory
+- Tags each model: type, path, context window, speed, cost/token
+
+### Dynamic Load/Unload
+- Tracks GPU VRAM per model
+- Loads best model match for each task
+- Unloads LRU model when VRAM is full
+- Frequently used models stay hot in VRAM
+
+### Self-Supervised Learning
+- Every task produces: (requested_sig, actual_sig, model, quality)
+- Models that consistently match signatures get higher priority
+- Models that drift from their stored signature get retested
+- No human labels needed — quality is signature distance
+
+### Implementation
+```python
+def route_task(task, requested_signature):
+    model = find_best_model(requested_signature)  # GPU signature lookup
+    load_model(model)                               # Dynamic GGUF load
+    output = model.generate(task)                    # Run task
+    actual_sig = signature(output)                   # Measure output
+    log(model, requested_sig, actual_sig)            # Self-supervised log
+    return output
+```
