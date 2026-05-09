@@ -1,0 +1,47 @@
+{
+  "text_name": "deepseek-v4-flash",
+  "generating_model": "deepseek-v4-flash",
+  "signature": "deepseek-v4-flash-voice-profile",
+  "anchor_points": {
+    "grounded": {
+      "value": 0.4104456481885806,
+      "confidence": 0.9037581243486733
+    },
+    "detailed": {
+      "value": 0.3641191179440959,
+      "confidence": 0.9406037917790356
+    },
+    "instructive": {
+      "value": 0.8110112931842604,
+      "confidence": 0.8727259204758588
+    },
+    "analytical": {
+      "value": 0.1614917302478929,
+      "confidence": 0.9943564165441922
+    },
+    "structural": {
+      "value": 0.3736393734594986,
+      "confidence": 0.9924894589884223
+    },
+    "speculative": {
+      "value": 0.8428535085814096,
+      "confidence": 0.8503564591650729
+    },
+    "intuitive": {
+      "value": 0.5773472853689819,
+      "confidence": 0.8994497011784771
+    },
+    "technical": {
+      "value": 0.3378075738071623,
+      "confidence": 0.8601756619633539
+    },
+    "layered": {
+      "value": 0.3029807676528175,
+      "confidence": 0.8569680988754935
+    },
+    "synthesizing": {
+      "value": 0.33978915476985566,
+      "confidence": 0.8073773894709066
+    }
+  }
+}

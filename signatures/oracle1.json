@@ -1,0 +1,47 @@
+{
+  "text_name": "oracle1",
+  "generating_model": "oracle1",
+  "signature": "oracle1-voice-profile",
+  "anchor_points": {
+    "grounded": {
+      "value": 0.39166125004134467,
+      "confidence": 0.9774425485152654
+    },
+    "detailed": {
+      "value": 0.5843627902203139,
+      "confidence": 0.89444298503239
+    },
+    "instructive": {
+      "value": 0.4893722471738247,
+      "confidence": 0.8239188491876603
+    },
+    "analytical": {
+      "value": 0.597693315999082,
+      "confidence": 0.9426489574445991
+    },
+    "structural": {
+      "value": 0.8842736562379941,
+      "confidence": 0.9521570097233796
+    },
+    "speculative": {
+      "value": 0.4268703435223519,
+      "confidence": 0.9122554395138993
+    },
+    "intuitive": {
+      "value": 0.7897792608821423,
+      "confidence": 0.9541934359909122
+    },
+    "technical": {
+      "value": 0.15429560192651454,
+      "confidence": 0.8987591192728782
+    },
+    "layered": {
+      "value": 0.3060311583210583,
+      "confidence": 0.9045465658763989
+    },
+    "synthesizing": {
+      "value": 0.7578722458080425,
+      "confidence": 0.88550820367171
+    }
+  }
+}

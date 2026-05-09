@@ -1,0 +1,47 @@
+{
+  "text_name": "glm-5.1",
+  "generating_model": "glm-5.1",
+  "signature": "glm-5.1-voice-profile",
+  "anchor_points": {
+    "grounded": {
+      "value": 0.6631342399080709,
+      "confidence": 0.9634444400402432
+    },
+    "detailed": {
+      "value": 0.5668644587834875,
+      "confidence": 0.9110401623198925
+    },
+    "instructive": {
+      "value": 1.0,
+      "confidence": 0.9059301156712014
+    },
+    "analytical": {
+      "value": 0.8961389298612857,
+      "confidence": 0.8483704581800904
+    },
+    "structural": {
+      "value": 0.6344332558534116,
+      "confidence": 0.8186205535611799
+    },
+    "speculative": {
+      "value": 0.540280704482532,
+      "confidence": 0.9794431515906654
+    },
+    "intuitive": {
+      "value": 0.22277014946653106,
+      "confidence": 0.9800836114326661
+    },
+    "technical": {
+      "value": 1.0,
+      "confidence": 0.9266202914546536
+    },
+    "layered": {
+      "value": 1.0,
+      "confidence": 0.8678059582097402
+    },
+    "synthesizing": {
+      "value": 0.7714889451720532,
+      "confidence": 0.8698419149225323
+    }
+  }
+}

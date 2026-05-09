@@ -180,18 +180,25 @@ def features_from_anchor_points(ap: dict) -> np.ndarray:
     """
     features = []
     for key, val in ap.items():
-        if isinstance(val, dict) and 'value' in val and 'scale' in val:
-            value = val.get('value', '')
+        if isinstance(val, dict) and 'value' in val:
             confidence = val.get('confidence', 0.5)
+            raw = val.get('value', 0)
             scale = val.get('scale', [])
 
-            # One-hot at value position, weighted by confidence
-            idx = scale.index(value) if value in scale else -1
-            for i, option in enumerate(scale):
-                features.append(confidence if i == idx else 0.0)
-
-            # Also add confidence as an explicit feature
-            features.append(float(confidence))
+            if scale:
+                # One-hot at value position, weighted by confidence
+                idx = scale.index(raw) if raw in scale else -1
+                for i, option in enumerate(scale):
+                    features.append(confidence if i == idx else 0.0)
+                features.append(float(confidence))
+            elif isinstance(raw, (int, float)):
+                # Simple numeric value: encode as value * confidence
+                features.append(float(raw) * float(confidence))
+                features.append(float(confidence))
+            else:
+                # String value: hash to a float
+                features.append(float(hash(str(raw)) % 1000) / 1000.0 * float(confidence))
+                features.append(float(confidence))
 
     return np.array(features, dtype=np.float64)
 
@@ -263,17 +270,32 @@ class SignatureMatrix:
             ndarray of shape (N, N) — symmetric distance matrix
         """
         xp = self.xp
-        sigs = xp.array(signatures, dtype=xp.float64)
+        is_torch = hasattr(xp, 'tensor')
+        is_cupy = hasattr(xp, 'cupy') or (hasattr(xp, '__name__') and xp.__name__ == 'cupy')
+
+        # Handle numpy, torch, and cupy backends
+        if is_torch:
+            dev = 'cuda' if xp.cuda.is_available() else 'cpu'
+            sigs = xp.tensor(signatures, dtype=xp.float64, device=dev)
+        else:
+            sigs = xp.array(signatures, dtype=xp.float64)
         n = sigs.shape[0]
+
+        # Matrix multiply function (torch.matmul vs np.dot)
+        def matmul(a, b):
+            return xp.matmul(a, b) if is_torch else xp.dot(a, b)
 
         if metric == 'cosine':
             # Normalize to unit vectors
-            norms = xp.linalg.norm(sigs, axis=1, keepdims=True)
+            if is_torch:
+                norms = xp.linalg.norm(sigs, dim=1, keepdim=True)
+            else:
+                norms = xp.linalg.norm(sigs, axis=1, keepdims=True)
             norms = xp.clip(norms, 1e-10, None)  # Avoid div by zero
             unit = sigs / norms
 
             # Cosine similarity matrix
-            sim = xp.dot(unit, unit.T)
+            sim = matmul(unit, unit.T)
             # Clamp for numerical stability
             sim = xp.clip(sim, -1.0, 1.0)
             # Convert to distance: 1 - cos(angle)
@@ -282,18 +304,21 @@ class SignatureMatrix:
         elif metric == 'euclidean':
             # ||a - b||^2 = ||a||^2 + ||b||^2 - 2*a·b
             norms = xp.sum(sigs ** 2, axis=1, keepdims=True)
-            dots = xp.dot(sigs, sigs.T)
+            dots = matmul(sigs, sigs.T)
             dist = xp.sqrt(xp.clip(norms + norms.T - 2 * dots, 0, None))
 
         else:
             raise ValueError(f"Unknown metric: {metric}. Use 'cosine' or 'euclidean'.")
 
         # Zero out diagonal
-        xp.fill_diagonal(dist, 0.0)
+        if is_torch:
+            dist.fill_diagonal_(0.0)
+        else:
+            xp.fill_diagonal(dist, 0.0)
 
         # Convert back to numpy for serialization
-        if hasattr(dist, 'get'):
-            return dist.get()
+        if hasattr(dist, 'cpu'):
+            return dist.cpu().numpy()
         return dist
 
     def summarize(self, dist_matrix: np.ndarray, metadata: List[Dict]) -> Dict:

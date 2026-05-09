@@ -1,0 +1,47 @@
+{
+  "text_name": "seed-2.0-mini",
+  "generating_model": "seed-2.0-mini",
+  "signature": "seed-2.0-mini-voice-profile",
+  "anchor_points": {
+    "grounded": {
+      "value": 0.8439494818110416,
+      "confidence": 0.9153807769252719
+    },
+    "detailed": {
+      "value": 0.40345724118197346,
+      "confidence": 0.8985035387637729
+    },
+    "instructive": {
+      "value": 0.39508871306225773,
+      "confidence": 0.8390485975596089
+    },
+    "analytical": {
+      "value": 0.4123606777094556,
+      "confidence": 0.9444904230523011
+    },
+    "structural": {
+      "value": 0.6275955501158716,
+      "confidence": 0.8561544724881712
+    },
+    "speculative": {
+      "value": 0.3918056654889806,
+      "confidence": 0.8048631932862909
+    },
+    "intuitive": {
+      "value": 0.4027530451937626,
+      "confidence": 0.9290944591814336
+    },
+    "technical": {
+      "value": 0.22141674475525377,
+      "confidence": 0.8354221358814098
+    },
+    "layered": {
+      "value": 1.0,
+      "confidence": 0.988091716870583
+    },
+    "synthesizing": {
+      "value": 0.43528992576412173,
+      "confidence": 0.9907857154005175
+    }
+  }
+}

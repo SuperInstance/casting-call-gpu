@@ -1,0 +1,60 @@
+{
+  "shape": [
+    5,
+    5
+  ],
+  "metric": "cosine",
+  "total_distances": 20,
+  "min_distance": 0.022850905357020168,
+  "max_distance": 0.07098566338058654,
+  "mean_distance": 0.05481473690446729,
+  "std_distance": 0.014162039969114781,
+  "most_similar": {
+    "a": "forgemaster",
+    "b": "glm-5.1",
+    "distance": 0.022850905357020168
+  },
+  "least_similar": {
+    "a": "glm-5.1",
+    "b": "oracle1",
+    "distance": 0.07098566338058654
+  },
+  "per_signature": [
+    {
+      "name": "deepseek-v4-flash",
+      "min_distance": 0.03989919882638382,
+      "max_distance": 0.064733301907547,
+      "mean_distance": 0.055533610660154054,
+      "std_distance": 0.009413234685390038
+    },
+    {
+      "name": "forgemaster",
+      "min_distance": 0.022850905357020168,
+      "max_distance": 0.06908666671283925,
+      "mean_distance": 0.05422207960157424,
+      "std_distance": 0.018377953040296033
+    },
+    {
+      "name": "glm-5.1",
+      "min_distance": 0.022850905357020168,
+      "max_distance": 0.07098566338058654,
+      "mean_distance": 0.052207884663262344,
+      "std_distance": 0.018541244860829698
+    },
+    {
+      "name": "oracle1",
+      "min_distance": 0.03989919882638382,
+      "max_distance": 0.07098566338058654,
+      "mean_distance": 0.05592822128817135,
+      "std_distance": 0.012455316497733121
+    },
+    {
+      "name": "seed-2.0-mini",
+      "min_distance": 0.04815533335281885,
+      "max_distance": 0.06908666671283925,
+      "mean_distance": 0.05618188830917445,
+      "std_distance": 0.008171500106688582
+    }
+  ],
+  "device": "GPU (NVIDIA GeForce RTX 4050 Laptop GPU)"
+}

@@ -1,0 +1,47 @@
+{
+  "text_name": "forgemaster",
+  "generating_model": "forgemaster",
+  "signature": "forgemaster-voice-profile",
+  "anchor_points": {
+    "grounded": {
+      "value": 0.7241785382528081,
+      "confidence": 0.9368466053024315
+    },
+    "detailed": {
+      "value": 0.5654339247072038,
+      "confidence": 0.8880304987479203
+    },
+    "instructive": {
+      "value": 1.0,
+      "confidence": 0.8244076469689559
+    },
+    "analytical": {
+      "value": 0.9807574641020063,
+      "confidence": 0.8990353820222541
+    },
+    "structural": {
+      "value": 0.541461656319166,
+      "confidence": 0.8068777042230437
+    },
+    "speculative": {
+      "value": 0.9414657607627048,
+      "confidence": 0.9818640804157565
+    },
+    "intuitive": {
+      "value": 0.9948032038768478,
+      "confidence": 0.8517559963200034
+    },
+    "technical": {
+      "value": 1.0,
+      "confidence": 0.9325044568707964
+    },
+    "layered": {
+      "value": 0.8826314035162619,
+      "confidence": 0.8623422152178822
+    },
+    "synthesizing": {
+      "value": 0.7356400108964911,
+      "confidence": 0.9040136042355622
+    }
+  }
+}
