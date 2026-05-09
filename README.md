@@ -1,5 +1,15 @@
 # Casting-Call GPU 🚀
 
+
+## Meta
+
+**Domain:** other
+**Depends on:** —
+**Depended by:** —
+**Implements:** GPU-native engine for anchor-point signature matrices, voice spline interpolatio...
+**Related:** —
+
+
 **GPU-native engine for anchor-point signature mathematics.**
 
 The mathematical engine behind the Casting-Call theory. Computes signature distance
